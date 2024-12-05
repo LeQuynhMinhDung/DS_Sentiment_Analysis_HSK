@@ -80,10 +80,10 @@ def show_project_info(final_data):
 
     # Thêm bình luận về biểu đồ
     st.write("""
-    Số lượng từ Negative và Positive được phân bổ khá hợp lý với các nhãn:
+    Số lượng từ Negative và Positive được phân bổ khá hợp lý với các bình luận có nhãn sau:
     - **Nhãn 0 (negative)** có số từ negative lớn hơn số từ positive.
     - **Nhãn 1 (neutral)** có số lượng từ positive lớn hơn negative ở mức độ tương đối.
-    - **Nhãn 2 (positive)** có số lượng từ positive vượt trội rất nhiều so với negative trong 1 câu.
+    - **Nhãn 2 (positive)** có số lượng từ positive vượt trội rất nhiều so với negative trong 1 bình luận.
     """)
 
     st.markdown(f"<h5 style='text-align: center; font-weight: bold; margin-top: 20px;'>WordCloud Positive</h5>", unsafe_allow_html=True)
@@ -140,7 +140,7 @@ def show_project_info(final_data):
     Dữ liệu có sự mất cân bằng lớn, với số lượng câu thuộc loại "positive" chiếm tới 90% tổng lượng dữ liệu. Sau khi cân nhắc, phương pháp **Class Weights** đã được chọn để xử lý imbalance.
     """)
 
-    st.write("##### 7. Data cuối dùng")
+    st.write("##### 7. Data cuối cùng trước khi đưa vào model")
     st.dataframe(final_data[['comment', 'negative_count', 'positive_count', 'label']].tail(5))
 
     st.write("##### 8. Xây dựng model")
@@ -163,4 +163,4 @@ def show_project_info(final_data):
     with col2:
         st.image("image/building_model_result/Confusion_Matrix_for_Random_Forest_Classifier.png")
 
-    st.write("Mô hình Sentiment Analysis sử dụng thuật toán Random Forest Classifier đạt kết quả khá tốt với độ chính xác lên đến 98.45%.")
+    st.write("Bài toán Sentiment Analysis sử dụng thuật toán Random Forest Classifier đạt kết quả khá tốt với độ chính xác lên đến 98.45%.")

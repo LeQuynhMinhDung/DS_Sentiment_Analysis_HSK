@@ -186,12 +186,16 @@ def main():
                         ''', unsafe_allow_html=True)
             # st.write("### 🌱 Business Objectives")
             st.write("""
-            HASAKI.VN là một nhà bán lẻ uy tín chuyên cung cấp các sản phẩm mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên nghiệp với các cửa hàng trên toàn quốc.  
+            **HASAKI.VN** là một nhà bán lẻ uy tín chuyên cung cấp các sản phẩm mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên nghiệp với các cửa hàng trên toàn quốc.  
             
             Ứng dụng của chúng tôi sử dụng **phân tích tình cảm (sentiment)** để giúp HASAKI hiểu rõ hơn về phản hồi của khách hàng, từ đó cải thiện chất lượng sản phẩm, nâng cao sự hài lòng của khách hàng và củng cố hình ảnh thương hiệu.  
             """)
             
-            st.image("image/Hasaki_Long.jpg")
+            col1a, col2a, col3a = st.columns([1,2,1])
+            with col2a:  
+                st.image("image/Hasaki_Logo.jpg")
+
+            # st.image("image/Hasaki_Logo.jpg")
             
             st.write("""
             ##### 🎯 Mục Tiêu Chính:
@@ -215,27 +219,68 @@ def main():
 
             show_project_info(final_data)
         
+    # elif choice == 'Phân Tích Sản Phẩm':
+    #     col1, col2, col3 = st.columns([1,2,1])
+    #     with col2:  
+    #         st.markdown('''<div class="stContainer">
+    #                     <h2 style="color: #2f6e51; font-size: 1.75em; ">📊 Phân Tích Sản Phẩm</h2>
+    #                     </div>
+    #                     ''', unsafe_allow_html=True)
+    #         # Tạo giao diện Streamlit
+    #         # st.write("### Phân Tích Sản Phẩm")
+
+    #         # Chọn sản phẩm từ dropdown
+    #         ten_san_pham = st.selectbox("Chọn tên sản phẩm:", final_data['ten_san_pham'].unique())
+    #         ma_san_pham = final_data[final_data["ten_san_pham"] == ten_san_pham]["ma_san_pham"].iloc[0]
+
+    #         # Phân tích và hiển thị kết quả
+    #         if st.button("Phân Tích"):
+    #             ket_qua = phan_tich_san_pham(final_data, ma_san_pham)
+    #             if "error" in ket_qua:
+    #                 st.error(ket_qua["error"])
+    #             else:
+    #                 hien_thi_ket_qua(ket_qua)
+
     elif choice == 'Phân Tích Sản Phẩm':
-        col1, col2, col3 = st.columns([1,2,1])
-        with col2:  
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
             st.markdown('''<div class="stContainer">
                         <h2 style="color: #2f6e51; font-size: 1.75em; ">📊 Phân Tích Sản Phẩm</h2>
                         </div>
                         ''', unsafe_allow_html=True)
-            # Tạo giao diện Streamlit
-            # st.write("### Phân Tích Sản Phẩm")
 
-            # Chọn sản phẩm từ dropdown
-            ten_san_pham = st.selectbox("Chọn tên sản phẩm:", final_data['ten_san_pham'].unique())
-            ma_san_pham = final_data[final_data["ten_san_pham"] == ten_san_pham]["ma_san_pham"].iloc[0]
+            # Chọn phương thức nhập liệu (Mã sản phẩm hoặc Tên sản phẩm)
+            input_method = st.radio("Chọn phương thức nhập liệu:", ["Chọn tên sản phẩm", "Nhập mã sản phẩm"])
+
+            if input_method == "Chọn tên sản phẩm":
+                # Chọn tên sản phẩm từ dropdown
+                ten_san_pham = st.selectbox("Chọn tên sản phẩm:", final_data['ten_san_pham'].unique())
+                ma_san_pham = final_data[final_data["ten_san_pham"] == ten_san_pham]["ma_san_pham"].iloc[0]
+            else:
+                # Nhập mã sản phẩm thủ công
+                ma_san_pham = st.text_input("Nhập mã sản phẩm:")
+                ten_san_pham = None  # Default to None as the name is not selected directly
+
+                if ma_san_pham:
+                    # ma_san_pham_str = str(ma_san_pham)
+                    final_data['ma_san_pham'] = final_data['ma_san_pham'].apply(str)
+                    # Kiểm tra xem mã sản phẩm có tồn tại trong dữ liệu không
+                    if ma_san_pham not in final_data["ma_san_pham"].values:
+                        ma_san_pham = None  # Reset mã sản phẩm nếu không tồn tại
+                    else:
+                        ten_san_pham = final_data[final_data["ma_san_pham"] == ma_san_pham]["ten_san_pham"].iloc[0]
+                        
 
             # Phân tích và hiển thị kết quả
             if st.button("Phân Tích"):
-                ket_qua = phan_tich_san_pham(final_data, ma_san_pham)
-                if "error" in ket_qua:
-                    st.error(ket_qua["error"])
+                if not ma_san_pham:
+                    st.error("Mã sản phẩm không tồn tại trong cơ sở dữ liệu. Vui lòng chọn hoặc nhập mã sản phẩm hợp lệ.")
                 else:
-                    hien_thi_ket_qua(ket_qua)
+                    ket_qua = phan_tich_san_pham(final_data, ma_san_pham)
+                    if "error" in ket_qua:
+                        st.error(ket_qua["error"])
+                    else:
+                        hien_thi_ket_qua(ket_qua)
 
 
     elif choice == 'Phân Tích Dữ Liệu Mới':
@@ -247,6 +292,25 @@ def main():
                         ''', unsafe_allow_html=True)
             # Main content area
             st.write("### Nhập dữ liệu mới")
+            # Hướng dẫn người dùng
+            st.markdown("""
+                **Hướng dẫn nhập dữ liệu vào ứng dụng:**
+                
+                Để bắt đầu phân tích, bạn có thể nhập dữ liệu mới theo một trong ba cách sau:
+                
+                1. **Nhập dữ liệu bằng tay:**
+                - Chỉ cần nhập mỗi bình luận đánh giá vào ô nhập liệu. Mỗi bình luận sẽ được nhập trên một dòng mới. Sau khi nhập xong, bạn hãy nhấn nút "Ctrl" + "Enter" để tiếp tục.
+                
+                2. **Tải file TXT:**
+                - Nếu bạn có một file văn bản (TXT) chứa các bình luận đánh giá, bạn có thể tải lên file đó. Mỗi dòng trong file TXT sẽ tương ứng với một bình luận đánh giá.
+                
+                3. **Tải file CSV:**
+                - Nếu dữ liệu của bạn có sẵn trong một file CSV, bạn chỉ cần tải lên file này. Lưu ý rằng trong file CSV, cột đầu tiên phải chứa các bình luận đánh giá (không cần tên cột) và mỗi dòng tương ứng với một bình luận.
+                
+                Sau khi dữ liệu được nhập, hãy chờ một lúc để ứng dụng để phân tích, xử lý thông tin và trả về kết quả.
+
+                Khi nhận được kết quả, một nút **"Tải về CSV"** sẽ xuất hiện, cho phép bạn có thể tải kết quả về dưới dạng file CSV.
+            """)
             input_type = st.radio("Chọn phương thức nhập:", options=("Tải lên (Upload)", "Nhập vào (Input)"))
             
             # Xử lý dữ liệu và dự đoán
