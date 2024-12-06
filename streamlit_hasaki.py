@@ -178,7 +178,7 @@ def main():
     
     # Existing menu logic remains the same
     if choice == 'Mục Tiêu Dự Án':
-        col1, col2, col3 = st.columns([1,2,1])
+        col1, col2, col3 = st.columns([1,3,1])
         with col2:  
             st.markdown('''<div class="stContainer">
                         <h2 style="color: #2f6e51; font-size: 1.75em; ">🌱 Mục Tiêu Dự Án</h2>
@@ -191,7 +191,7 @@ def main():
             Ứng dụng của chúng tôi sử dụng **phân tích tình cảm (sentiment)** để giúp HASAKI hiểu rõ hơn về phản hồi của khách hàng, từ đó cải thiện chất lượng sản phẩm, nâng cao sự hài lòng của khách hàng và củng cố hình ảnh thương hiệu.  
             """)
             
-            col1a, col2a, col3a = st.columns([1,2,1])
+            col1a, col2a, col3a = st.columns([1,3,1])
             with col2a:  
                 st.image("image/Hasaki_Logo.jpg")
 
@@ -209,7 +209,7 @@ def main():
             # st.markdown('</div>', unsafe_allow_html=True)
 
     elif choice == 'Xây Dựng Dự Án':
-        col1, col2, col3 = st.columns([1,2,1])
+        col1, col2, col3 = st.columns([1,3,1])
         with col2:  
             st.markdown('''<div class="stContainer">
                         <h2 style="color: #2f6e51; font-size: 1.75em; ">🔨 Xây Dựng Dự Án</h2>
@@ -220,7 +220,7 @@ def main():
             show_project_info(final_data)
         
     # elif choice == 'Phân Tích Sản Phẩm':
-    #     col1, col2, col3 = st.columns([1,2,1])
+    #     col1, col2, col3 = st.columns([1,3,1])
     #     with col2:  
     #         st.markdown('''<div class="stContainer">
     #                     <h2 style="color: #2f6e51; font-size: 1.75em; ">📊 Phân Tích Sản Phẩm</h2>
@@ -284,7 +284,7 @@ def main():
 
 
     elif choice == 'Phân Tích Dữ Liệu Mới':
-        col1, col2, col3 = st.columns([1,2,1])
+        col1, col2, col3 = st.columns([1,3,1])
         with col2:  
             st.markdown('''<div class="stContainer">
                         <h2 style="color: #2f6e51; font-size: 1.75em; ">📋 Phân Tích Dữ Liệu Mới</h2>
