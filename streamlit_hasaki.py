@@ -244,7 +244,7 @@ def main():
     #                 hien_thi_ket_qua(ket_qua)
 
     elif choice == 'Phân Tích Sản Phẩm':
-        col1, col2, col3 = st.columns([1, 2, 1])
+        col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
             st.markdown('''<div class="stContainer">
                         <h2 style="color: #2f6e51; font-size: 1.75em; ">📊 Phân Tích Sản Phẩm</h2>
