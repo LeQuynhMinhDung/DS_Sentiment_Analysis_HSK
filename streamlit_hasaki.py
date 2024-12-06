@@ -188,7 +188,7 @@ def main():
             st.write("""
             **HASAKI.VN** là một nhà bán lẻ uy tín chuyên cung cấp các sản phẩm mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên nghiệp với các cửa hàng trên toàn quốc.  
             
-            Ứng dụng của chúng tôi sử dụng **phân tích tình cảm (sentiment)** để giúp HASAKI hiểu rõ hơn về phản hồi của khách hàng, từ đó cải thiện chất lượng sản phẩm, nâng cao sự hài lòng của khách hàng và củng cố hình ảnh thương hiệu.  
+            Ứng dụng của chúng tôi sử dụng **phân tích cảm xúc (sentiment)** để giúp HASAKI hiểu rõ hơn về phản hồi của khách hàng, từ đó cải thiện chất lượng sản phẩm, nâng cao sự hài lòng của khách hàng và củng cố hình ảnh thương hiệu.  
             """)
             
             col1a, col2a, col3a = st.columns([1,2,1])
@@ -199,7 +199,7 @@ def main():
             
             st.write("""
             ##### 🎯 Mục Tiêu Chính:
-            - **Hiểu rõ tình cảm của khách hàng**: Phân tích các đánh giá và xếp hạng sao để nhận diện các phản hồi tích cực, tiêu cực và mang tính xây dựng.  
+            - **Hiểu rõ cảm xúc của khách hàng**: Phân tích các đánh giá và xếp hạng sao để nhận diện các phản hồi tích cực, tiêu cực và mang tính xây dựng.  
             - **Cải thiện chất lượng sản phẩm và dịch vụ**: Sử dụng những thông tin thu được để cải thiện các sản phẩm và dịch vụ.  
             - **Tăng cường sự hài lòng và trung thành của khách hàng**: Giải quyết các mối quan tâm của khách hàng để xây dựng niềm tin.  
             """)  
