@@ -154,12 +154,12 @@ def show_project_info(final_data):
 
     # Hiển thị hình ảnh của Classification Report và Confusion Matrix
     st.write("###### 9.1. Classification Report: ")
-    col1, col2, col3 = st.columns([1,3,1])
+    col1, col2, col3 = st.columns([1,2,1])
     with col2:
         st.image("image/building_model_result/Classification_Report_Random_Forest.png")
 
     st.write("###### 9.2. Confusion Matrix:")
-    col1, col2, col3 = st.columns([1,3,1])
+    col1, col2, col3 = st.columns([1,2,1])
     with col2:
         st.image("image/building_model_result/Confusion_Matrix_for_Random_Forest_Classifier.png")
 
