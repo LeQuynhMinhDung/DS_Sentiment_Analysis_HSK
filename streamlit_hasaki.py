@@ -301,7 +301,7 @@ def main():
                 Để bắt đầu phân tích, bạn có thể nhập dữ liệu mới theo một trong ba cách sau:
                 
                 1. **Nhập dữ liệu bằng tay:**
-                - Chỉ cần nhập mỗi bình luận đánh giá vào ô nhập liệu. Mỗi bình luận sẽ được nhập trên một dòng mới. Sau khi nhập xong, bạn hãy nhấn nút "Ctrl" + "Enter" để tiếp tục.
+                - Chỉ cần nhập mỗi bình luận đánh giá vào ô nhập liệu. Mỗi bình luận sẽ được nhập trên một dòng mới. Sau khi nhập xong, bạn hãy nhấn tổ hợp phím "Ctrl" + "Enter" để tiếp tục.
                 
                 2. **Tải file TXT:**
                 - Nếu bạn có một file văn bản (TXT) chứa các bình luận đánh giá, bạn có thể tải lên file đó. Mỗi dòng trong file TXT sẽ tương ứng với một bình luận đánh giá.
