@@ -191,7 +191,7 @@ def main():
             Ứng dụng của chúng tôi sử dụng **phân tích tình cảm (sentiment)** để giúp HASAKI hiểu rõ hơn về phản hồi của khách hàng, từ đó cải thiện chất lượng sản phẩm, nâng cao sự hài lòng của khách hàng và củng cố hình ảnh thương hiệu.  
             """)
             
-            col1a, col2a, col3a = st.columns([1,3,1])
+            col1a, col2a, col3a = st.columns([1,2,1])
             with col2a:  
                 st.image("image/Hasaki_Logo.jpg")
 
@@ -205,7 +205,9 @@ def main():
             """)  
             
             # st.image("image/sentiment.png", caption="Sentiment Analysis for Customer Reviews")
-            st.image("image/sentiment.png")
+            col1a, col2a, col3a = st.columns([1,2,1])
+            with col2a:  
+                st.image("image/sentiment.png")
             # st.markdown('</div>', unsafe_allow_html=True)
 
     elif choice == 'Xây Dựng Dự Án':
